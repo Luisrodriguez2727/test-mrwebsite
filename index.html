@@ -50,13 +50,14 @@
     const guessField = document.querySelector('.guessField');
 
     function checkGuess() {
-    let userGuess = parseInt(guessField.value, 10);
+    let userGuess = guessField.value.trim();
 
-    if (isNaN(userGuess) || !Number.isInteger(userGuess)) {
+     if (!/^\d+$/.test(userGuess)) {
     alert('Por favor, ingresa un número entero válido.');
     return;
       }
-
+      userGuess = parseInt(userGuess, 10);
+      
       if (guessCount === 1) {
         guesses.textContent = 'Intentos anteriores: ';
       }
