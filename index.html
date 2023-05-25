@@ -53,32 +53,43 @@
         let resetButton;
 
         function checkGuess() {
+          
+           let userGuess = parseInt(guessField.value);
+           if (isNaN(userGuess) || !Number.isInteger(userGuess)) {
+           alert('Por favor, ingresa un número entero válido.');
+           return;
+           }
 
-          let userGuess = guessField.value;
-          if(guessCount === 1) {
-            guesses.textContent = 'Número aleatorio anterior: ';
+          if (guessCount === 1) {
+              guesses.textContent = 'Intentos anteriores: ';
           }
-          guesses.textContent += userGuess + ' ';
+  guesses.textContent += userGuess + ' ';
 
-          if(userGuess == randomNumber) { // Corrección: Utiliza la comparación no estricta para comparar los números
+        if (userGuess === randomNumber) {
             lastResult.textContent = '¡Felicitaciones! ¡Adivinaste el número!';
             lastResult.style.backgroundColor = 'green';
             lowOrHi.textContent = '';
             setGameOver();
-          } else if(guessCount === ATTEMPS) {
-            lastResult.textContent = '¡Perdiste!';
+          } else if (guessCount === ATTEMPTS) {
+            lastResult.textContent = '¡Perdiste! El número era ' + randomNumber + '.';
             lastResult.style.backgroundColor = 'red';
             lowOrHi.textContent = '';
             setGameOver();
           } else {
-            lastResult.textContent = 'Incorrecto! ';
+            lastResult.textContent = 'Incorrecto!';
             lastResult.style.backgroundColor = 'black';
-            if(userGuess < randomNumber) {
-              lowOrHi.textContent = '¡El número es mayor!';
-            } else if(userGuess > randomNumber) {
-              lowOrHi.textContent = '¡El número es menor!';
+            if (userGuess < randomNumber) {
+            lowOrHi.textContent = 'El número es mayor.';
+          } else if (userGuess > randomNumber) {
+            lowOrHi.textContent = 'El número es menor.';
+         }
+        }
+
+            guessCount++;
+            guessField.value = '';
+           guessField.focus();
             }
-          }
+
 
           guessCount++;
           guessField.value = '';
