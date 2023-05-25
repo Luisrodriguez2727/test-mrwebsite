@@ -59,6 +59,12 @@
       alert('Por favor, ingresa un número entero válido.');
       return;
       }
+       
+      if (userGuess > 100) {
+      alert('Por favor, ingresa un número menor o igual a 100.');
+      return;
+      }
+  
         userGuess = parseInt(userGuess, 10);
       
       if (guessCount === 1) {
