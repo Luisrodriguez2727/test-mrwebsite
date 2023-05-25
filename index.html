@@ -50,11 +50,11 @@
     const guessField = document.querySelector('.guessField');
 
     function checkGuess() {
-      let userGuess = parseInt(guessField.value);
+    let userGuess = parseInt(guessField.value, 10);
 
-      if (isNaN(userGuess) || !Number.isInteger(userGuess)) {
-        alert('Por favor, ingresa un número entero válido.');
-        return;
+    if (isNaN(userGuess) || !Number.isInteger(userGuess)) {
+    alert('Por favor, ingresa un número entero válido.');
+    return;
       }
 
       if (guessCount === 1) {
